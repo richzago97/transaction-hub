@@ -1,5 +1,3 @@
-**Projeto Spring Boot: LearningSpring**
-
 ## Sobre o Projeto
 
 Bem-vindo ao LearningSpring, meu primeiro projeto em Java, desenvolvido com entusiasmo e dedicação para aprimorar minhas habilidades em Spring Boot. Este projeto implementa um sistema básico de gerenciamento de usuários e transações, utilizando PostgreSQL como banco de dados. O LearningSpring está hospedado no serviço Render por um período de seis meses.
