@@ -7,6 +7,7 @@ import br.com.richard.learningspring.model.User;
 import br.com.richard.learningspring.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.UserDataHandler;
 
 import java.util.List;
 
@@ -18,7 +19,19 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    private void checkEmailAndCpf(final UserDto userData) {
+        if (userRepository.existsUserByCpf(userData.getCpf())) {
+            throw new AppException("Cpf already in use", HttpStatus.CONFLICT);
+        }
+
+        if (userRepository.existsUserByEmail(userData.getEmail())) {
+            throw new AppException("Email already in use", HttpStatus.CONFLICT);
+        }
+    }
+
     public User createUser(final UserDto userData) {
+        
+        checkEmailAndCpf(userData);
 
         final User newUser = new User(userData.getName(), userData.getCpf(), userData.getEmail(), userData.getPassword(), userData.getType());
 
@@ -35,6 +48,9 @@ public class UserService {
     }
 
     public User updateUser(final UserDto userData, final long id) {
+
+        checkEmailAndCpf(userData);
+        
         final User foundUser = userRepository.findById(id).orElseThrow(() -> new AppException("User not found", HttpStatus.NOT_FOUND));
 
         foundUser.setName(userData.getName());

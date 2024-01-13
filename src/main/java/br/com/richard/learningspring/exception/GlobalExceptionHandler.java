@@ -15,13 +15,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.HashMap;
 import java.util.List;
-
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
     private final MessageSource messages;
 
-    public GlobalExceptionHandler(MessageSource message) {
-        this.messages = message;
+    public GlobalExceptionHandler(MessageSource messages) {
+        this.messages = messages;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         allErrorsList.forEach(error -> {
             if (error instanceof FieldError) {
                 allErrorsObject.put(((FieldError) error).getField(), error.getDefaultMessage());
-            }else {
+            } else {
                 allErrorsObject.put(error.getObjectName(), error.getDefaultMessage());
             }
         });
@@ -43,17 +43,28 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         returnObject.put("message", allErrorsObject);
 
         return new ResponseEntity<>(returnObject, HttpStatus.BAD_REQUEST);
+
     }
 
-    @ExceptionHandler({AppException.class})
-    public ResponseEntity<Object> handleAppException(final AppException ex, final WebRequest request) {
+   @ExceptionHandler({ AppException.class })
+    public ResponseEntity<Object> handleAppException(final AppException ex) {
 
         final HashMap<String, String> returnObject = new HashMap<>();
-        returnObject.put("message", messages.getMessage("message." + ex.getMessage(), null, request.getLocale()));
+        returnObject.put("message", ex.getMessage());
 
         return new ResponseEntity<>(returnObject, ex.getStatusCode());
+
     }
 
+    // @ExceptionHandler({ AppException.class })
+    // public ResponseEntity<Object> handleAppException(final AppException ex, final WebRequest request) {
+
+    //     final HashMap<String, String> returnObject = new HashMap<>();
+    //     returnObject.put("message", messages.getMessage("message." + ex.getMessage(), null, request.getLocale()));
+
+    //     return new ResponseEntity<>(returnObject, ex.getStatusCode());
+
+    // }
 
     @ExceptionHandler({ Exception.class })
     public ResponseEntity<Object> handleInternal(final RuntimeException ex, final WebRequest request) {
@@ -66,6 +77,5 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(returnObject, HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
-
 
 }
