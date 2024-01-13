@@ -30,6 +30,7 @@ public class TransactionService {
         if (Objects.equals(foundPayer.getType(), "SELLER")) {
             throw new AppException("invalid user type", HttpStatus.FORBIDDEN);
         }
+        
         final User foundPayee = userRepository.findById(transactionData.getPayee_id()).orElseThrow(() -> new AppException("User not found", HttpStatus.NOT_FOUND));
 
         final float transactionValue = transactionData.getValue();

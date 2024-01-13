@@ -7,7 +7,6 @@ import br.com.richard.learningspring.model.User;
 import br.com.richard.learningspring.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.UserDataHandler;
 
 import java.util.List;
 

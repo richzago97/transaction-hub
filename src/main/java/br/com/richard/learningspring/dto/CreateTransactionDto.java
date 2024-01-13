@@ -1,9 +1,6 @@
 package br.com.richard.learningspring.dto;
 
-import br.com.richard.learningspring.model.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 
