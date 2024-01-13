@@ -1,12 +1,14 @@
 package br.com.richard.learningspring.dto;
 
-import org.antlr.v4.runtime.misc.NotNull;
+
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 
 
 
 public class CreateDepositDto {
-    @NotNull(message = "Value cannot be null")
-    @DecimalMin(value = "0.01", message= "Value must be higher than 0.01")
+    @NotNull(message = "value cannot be null")
+    @DecimalMin(value = "0.01", message= "value must be higher than 0.01")
     private float value;
 
     public float getValue() {

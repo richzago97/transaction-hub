@@ -4,16 +4,19 @@ import br.com.richard.learningspring.model.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 
 public class CreateTransactionDto {
 
+    @NotNull(message = "payer_id cannot be null")
     private long payer_id;
 
-
+    @NotNull(message = "payee_id cannot be null")
     private long payee_id;
 
-
+    @NotNull(message = "value cannot be null")
+    @DecimalMin(value = "0.01", message= "value must be higher than 0.01")
     private float value;
 
     public long getPayer_id() {
