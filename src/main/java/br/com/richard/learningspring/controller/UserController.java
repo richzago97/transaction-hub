@@ -4,6 +4,8 @@ import br.com.richard.learningspring.dto.CreateDepositDto;
 import br.com.richard.learningspring.dto.UserDto;
 import br.com.richard.learningspring.model.User;
 import br.com.richard.learningspring.service.UserService;
+import jakarta.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody final UserDto userdata) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody final UserDto userdata) {
 
         final User createdUser = userService.createUser(userdata);
 
@@ -44,7 +46,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@RequestBody final UserDto userData, @PathVariable final String id) {
+    public ResponseEntity<User> updateUser(@Valid @RequestBody final UserDto userData, @PathVariable final String id) {
 
         final User updatedUser = userService.updateUser(userData,Long.parseLong(id));
 
