@@ -38,6 +38,7 @@ Bem-vindo ao LearningSpring, meu primeiro projeto em Java, desenvolvido com entu
 - Maven
 - PostgreSQL
 - [Render](https://render.com/) account (opcional)
+- Docker (opcional)
 
 ### Passos de Instalação
 
@@ -51,6 +52,18 @@ Bem-vindo ao LearningSpring, meu primeiro projeto em Java, desenvolvido com entu
 
    - Certifique-se de ter um banco de dados PostgreSQL em execução.
    - Edite as configurações do banco de dados no arquivo `src/main/resources/application.properties`.
+    - **Configuração Docker (Opcional):** Preencha o arquivo `.env` com suas credenciais.
+
+       ```
+       POSTGRES_DB=seu-banco-de-dados
+       POSTGRES_USER=nome-database
+       POSTGRES_PASSWORD=password
+       ```
+
+   - Se estiver usando Docker, suba o contêiner do PostgreSQL:
+
+     ```bash
+     docker-compose up -d
 
 3. **Compile e Execute o Projeto:**
 
