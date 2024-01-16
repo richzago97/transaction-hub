@@ -63,7 +63,7 @@ Bem-vindo ao LearningSpring, meu primeiro projeto em Java, desenvolvido com entu
    - Se estiver usando Docker, suba o contêiner do PostgreSQL:
 
      ```bash
-     docker-compose up -d
+     docker compose up
 
 3. **Compile e Execute o Projeto:**
 
