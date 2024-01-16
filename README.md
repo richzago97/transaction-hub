@@ -1,6 +1,6 @@
 ## Sobre o Projeto
 
-Bem-vindo ao LearningSpring, meu primeiro projeto em Java, desenvolvido com entusiasmo e dedicação para aprimorar minhas habilidades em Spring Boot. Este projeto implementa um sistema básico de gerenciamento de usuários e transações, utilizando PostgreSQL como banco de dados.
+Bem-vindo ao Transaction Hub, meu primeiro projeto em Java, desenvolvido com entusiasmo e dedicação para aprimorar minhas habilidades em Spring Boot. Este projeto implementa um sistema básico de gerenciamento de usuários e transações, utilizando PostgreSQL como banco de dados.
 
 ### Tabelas do Banco de Dados
 
